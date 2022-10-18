@@ -1,0 +1,42 @@
+@use 'global' as *;
+
+.sticky {
+    padding-top: rem(142);
+    padding-bottom: rem(200);
+}
+
+.sticky__inner {
+    max-width: rem(960);
+    width: 100%;
+    margin: 0 auto;
+    @include mq('md') {
+        width: 80%;
+    }
+    @include mq('sm') {
+        
+    }
+}
+.sticky__wrapper {
+    margin-top: rem(100);
+    @include mq('md') {
+       margin-top: rem(140); 
+    }
+    @include mq('mm') {
+       margin-top: rem(200);
+    }
+}
+.sticky__image {
+    width: rem(400);
+}
+
+.sticky1 {
+
+}
+
+.sticly2{
+
+}
+
+.sticky3{
+
+}

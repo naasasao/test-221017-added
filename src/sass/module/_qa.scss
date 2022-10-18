@@ -1,0 +1,210 @@
+@use 'global' as *;
+
+.qa {
+    padding-top: rem(142);
+    padding-bottom: rem(200);
+    background-color: #F4F6F6;
+}
+
+.qa__inner {
+    max-width: rem(1140);
+    width: 100%;
+    margin: 0 auto;
+    padding-right: $padding-sp;
+    padding-left: $padding-sp; 
+}
+
+.qa__contents {
+    position: relative;
+    margin-top: rem(120);
+    @include mq('sm') {
+       margin-top: rem(160); 
+    }
+}
+
+.qa__contents::before{
+    position: absolute;
+    top: -61px;
+    left: -64px;
+    content: '';
+    background-image: url(../images/qatriangle.png);
+    width: 400px;
+    height:289px;
+    display: inline-block;
+    vertical-align: middle;
+    @media screen and (max-width:1200px){
+        top: -15px;
+        left: -10px;
+    }
+    @include mq('md') {
+       top: -45px; 
+       left: -50px;
+        transform: scale(0.8);
+    }
+    @include mq('sm') {
+        top: -58px;
+        left: -70px;
+        transform: scale(0.7);
+    }
+}
+
+.qa__content + .qa__content {
+    margin-top: 15px;
+}
+
+.qa__label  {
+    cursor: pointer;
+    position: relative;
+    padding-left: rem(30);
+    padding-top: rem(16);
+    padding-bottom: rem(22);
+    background-color: $white;
+    @include mq('md') {
+       padding-top: rem(28);
+       padding-bottom: rem(28); 
+    }
+    @include mq('sm') {
+       padding-top: rem(32);
+       padding-bottom: rem(32); 
+    }
+}
+
+.qa__label::before {
+    content: "Q";
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    color: $blue;
+    font-size: 28px;
+    @include mq('md') {
+        font-size: 16px; 
+        top: 50%;
+     }
+     @include mq('mm') {
+        font-size: 15px; 
+     }
+     @include mq('ss') {
+        font-size: 14px;
+     }
+ 
+}
+
+
+.qa__label > p {
+    margin-left: rem(40);
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    @include mq('md') {
+       font-size: 16px; 
+    }
+    @include mq('mm') {
+       font-size: 15px; 
+       margin-left: rem(50);
+    }
+    @include mq('ss') {
+       font-size: 14px;
+       margin-left: rem(54); 
+    }
+}
+
+.qa__answer {
+    display: none;
+}
+
+.qa__answer > p {
+    font-size: rem(16);
+    padding-left: rem(30);
+    padding-top: rem(14);
+    padding-bottom: rem(14);
+    position: relative;
+    background-color: $white;
+    @include mq('md') {
+        font-size: 16px; 
+     }
+     @include mq('mm') {
+        font-size: 15px; 
+     }
+     @include mq('ss') {
+        font-size: 14px;
+     }
+ 
+}
+
+.qa__answer > p::before {
+    margin-left: rem(40);
+    margin-right: rem(10);
+    content: "A";
+    top: 50%;
+    transform: translateY(-50%);
+    color: blue;
+    left: 0;
+    @include mq('md') {
+        font-size: 16px; 
+     }
+     @include mq('mm') {
+        font-size: 15px; 
+     }
+     @include mq('ss') {
+        font-size: 14px;
+     }
+ 
+}
+
+.qa__icon-wrap {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    @include mq('md') {
+       width: 20px;
+       height: 20px; 
+    }
+    @include mq('ss') {
+       padding-left: rem(10); 
+    }
+}
+
+.qa__icon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+  /* プラスアイコン */
+  /* ２本の線を.icon-wrapの中央に並行に重ねる */
+.qa__icon:before,
+.qa__icon:after {
+    position: absolute;
+    content: "";
+    display: block;
+    transition: all 0.4s;
+    background: $black;
+    left: 50%;
+    top: 47%;
+    width: 50%;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    @include mq('mm') {
+        height: 1px; 
+    }
+    @include mq('md') {
+       width: 60%; 
+    }
+}
+
+  /* そのうち1本を縦にする */
+.qa__icon:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+  
+/* プラスアイコンクリック後、マイナスにする */
+.qa__icon.open:before {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.qa__button-area {
+    margin-top: rem(121);
+    text-align: center;
+}

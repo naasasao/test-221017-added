@@ -1,0 +1,44 @@
+@use 'global' as *;
+
+.button {
+    font-size: 28px;
+    color: $white;
+    background-color: $blue;
+    padding-top: rem(12);
+    padding-bottom: rem(18);
+    padding-left: rem(96);
+    padding-right: rem(68);
+    transition: .3s;
+    line-height: 1;
+    @include mq('md') {
+    font-size: 18px; 
+    }
+    @include mq('mm') {
+    font-size: 16px; 
+    }
+}
+
+.button span{
+    margin-left: rem(20);
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 8px;
+    border-bottom: 3px solid $white;
+    border-right: 3px solid $white;
+    transform: skew(45deg);
+    @include mq('md') {
+    width: 30px;
+    border-bottom: 1px solid $white;
+    border-right: 1px solid $white;
+    }
+    @include mq('mm') {
+    width: 20px;
+    height: 4px; 
+    }
+}
+
+.button:hover{
+    transition: .3s;
+    background-color: blue;
+}

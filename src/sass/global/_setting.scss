@@ -1,0 +1,164 @@
+@use "sass:math";
+
+////////////////////
+// インナー幅設定
+////////////////////
+// コンテンツのインナー幅（最も共通の幅が多い部分）
+$inner: 1100px;
+// ※キャンパス幅ではなくインナーの幅を指す
+
+// 余白
+$padding-pc: 25px;
+$padding-sp: 20px;
+
+////////////////////
+// フォント設定
+////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+$base-font-family: 'Noto Sans JP', sans-serif;
+
+body {
+  font-family: $base-font-family;
+}
+
+// フォントウェイト
+$regular: 300;
+$normal: 400;
+$bold: 700;
+
+////////////////////
+// 色の指定
+////////////////////
+$black: #111;
+$white: #fff;
+$blue: #6FB1DE;
+
+////////////////////
+// メディアクエリとブレークポイントの設定
+////////////////////
+
+//ブレイクポイント
+$breakpoints: (
+  xl: 1440,
+  ll: 1280,
+  lg: 1024,
+  mm: 960,
+  md: 768,
+  sm: 600,
+  ss: 375,
+);
+
+//メディアクエリー
+$mediaquerys: (
+  xl: "screen and (max-width: #{map-get($breakpoints,'xl')}px)",
+  ll: "screen and (max-width: #{map-get($breakpoints,'ll')}px)",
+  lg: "screen and (max-width: #{map-get($breakpoints,'lg')}px)",
+  mm: "screen and (max-width: #{map-get($breakpoints,'mm')}px)",
+  md: "screen and (max-width: #{map-get($breakpoints,'md')}px)",
+  sm: "screen and (max-width: #{map-get($breakpoints,'sm')}px)",
+  ss: "screen and (max-width: #{map-get($breakpoints,'ss')}px)",
+);
+
+
+@media screen and (max-width: 900px){
+
+}
+
+// @include lineHeightSpaceFill(2);
+// ハーフ・レディング
+@mixin lineHeightSpaceFill($line-height) {
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+  }
+  &::before {
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+  &::after {
+    margin-bottom: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+
+@mixin mq($mediaquery: md) {
+  @media #{map-get($mediaquerys, $mediaquery)} {
+    @content;
+  }
+}
+
+// remへの計算式（16pxを基準としている。10pxを基準とする場合は16を10に変更する）
+@function rem($font-size) {
+  @return $font-size / 16 * 1rem;
+}
+
+////////////////////
+// 非表示設定
+////////////////////
+
+//768px以上で表示
+.u-desktop {
+  display: none;
+  @include mq("md") {
+    display: block;
+  }
+}
+
+//モバイルのみ表示
+.u-mobile {
+  @include mq("md") {
+    display: none;
+  }
+}
+
+
+
+
+// ダウンアップ時の改行
+.br-ss {
+  display: block;
+  @media screen and (min-width: 376px){
+    display: none;
+  }
+}
+
+.br-sm {
+  display: block;
+  @media screen and (min-width: 600px){
+    display: none;
+  }
+}
+
+.br-481 {
+  display: block;
+  @media screen and (max-width: 481px){
+    display: none;
+  }
+}
+
+// ダウンサイズ時の改行
+.br-ss {
+  display: none;
+  @include mq('ss') {
+    display: block;
+  }
+}
+.br-450 {
+  display: none;
+  @media screen and (max-width:450px){
+    display: block;
+  }
+}
+.br-md {
+  display: none;
+  @include mq('md') {
+    display: block;
+  }
+}
+.br-mm {
+  display: none;
+  @include mq('mm') {
+    display: block;
+  }
+}
