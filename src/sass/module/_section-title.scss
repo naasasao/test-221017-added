@@ -15,6 +15,9 @@
       height: 2px;
       transform: translate(-50%); 
       background-color: $blue;
+      @include mq('sm') {
+        bottom: -20px;
+      }
 }
 .section-title__en {
     font-size: 40px;

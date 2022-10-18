@@ -112,7 +112,7 @@
 }
 
 .qa__answer > p {
-    font-size: rem(16);
+    font-size: 22px;
     padding-left: rem(30);
     padding-top: rem(14);
     padding-bottom: rem(14);
@@ -131,13 +131,15 @@
 }
 
 .qa__answer > p::before {
-    margin-left: rem(40);
-    margin-right: rem(10);
+    margin-left: rem(2);
+    margin-right: rem(20);
     content: "A";
     top: 50%;
     transform: translateY(-50%);
     color: blue;
     left: 0;
+    font-size: 28px;
+
     @include mq('md') {
         font-size: 16px; 
      }

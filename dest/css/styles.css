@@ -456,8 +456,7 @@ select::-ms-expand {
 }
 
 .qa__answer > p {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 22px;
   padding-left: 30px;
   padding-left: 1.875rem;
   padding-top: 14px;
@@ -484,16 +483,17 @@ select::-ms-expand {
 }
 
 .qa__answer > p::before {
-  margin-left: 40px;
-  margin-left: 2.5rem;
-  margin-right: 10px;
-  margin-right: 0.625rem;
+  margin-left: 2px;
+  margin-left: 0.125rem;
+  margin-right: 20px;
+  margin-right: 1.25rem;
   content: "A";
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   color: blue;
   left: 0;
+  font-size: 28px;
 }
 @media screen and (max-width: 768px) {
   .qa__answer > p::before {
@@ -603,6 +603,11 @@ select::-ms-expand {
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
   background-color: #6FB1DE;
+}
+@media screen and (max-width: 600px) {
+  .section-title::before {
+    bottom: -20px;
+  }
 }
 
 .section-title__en {
