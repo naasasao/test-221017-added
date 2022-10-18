@@ -9,15 +9,15 @@ const srcPath = {
     img: 'src/images/**/*',
     html: './**/*.html',
     ejs: ["./src/ejs/**/*.ejs", "!" + "./src/ejs/**/_*.ejs"],
-    js: '/js/*.js',
+    js: 'src/js/*.js'
 }
 
 // 吐き出し先（なければ生成される）
 const destPath = {
     css: 'dest/css/',
-    js: 'dest/js/',
     img: 'dest/images/',
     html: 'dest/',
+    js: 'dest/js/'
 }
 
 // ブラウザーシンク（リアルタイムでブラウザに反映させる処理）
@@ -73,7 +73,7 @@ const cssSass = () => {
         }))
 }
 
-//js babel
+// //js babel
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
 
@@ -100,7 +100,7 @@ const jsBabel = () => {
       .pipe(dest(destPath.js))
    }
    
-   exports.default = series(cssSass, jsBabel);
+  //  exports.default = series(cssSass, jsBabel);
 
 // 画像圧縮
 const imagemin = require("gulp-imagemin");
@@ -130,6 +130,7 @@ const watchFiles = (done) => {
     // gulp.watch(["./src/*.ejs", "!./src/_*.ejs"], EJScompile);
     //96行目を★を参考に追記するとブロックスコープに関するエラーが出るのでココに自分で追記した↑
     watch(srcPath.ejs, series(EJScompile, browserSyncReload))
+    watch(srcPath.js, series(jsBabel, browserSyncReload))
     done();
 }
 
@@ -200,8 +201,7 @@ const EJScompile = (done) => {
 
 //下の2セクションは元々のDartfileに記述があった↓
 // npx gulpで出力する内容
-exports.default = series(series(clean, cssSass, imgImagemin, EJScompile), parallel(watchFiles,browserSyncFunc));
-
+exports.default = series(series(clean, cssSass, imgImagemin, EJScompile, jsBabel), parallel(watchFiles,browserSyncFunc));
 
 // npx gulp del → 画像最適化（重複を削除）
 // exports.del = series(series(clean, cssSass, imgImagemin), parallel(watchFiles, browserSyncFunc));
