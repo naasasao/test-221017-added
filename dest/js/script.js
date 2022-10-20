@@ -1,6 +1,6 @@
+"use strict";
 
-jQuery(function ($) { 
-  
+jQuery(function ($) {
   var topBtn = $('.pagetop');
   topBtn.hide();
 
@@ -15,18 +15,25 @@ jQuery(function ($) {
     }
   });
 
- // アコーディオン
- $(function () {
-  $('.qa__label').click(function () {
-    $(this).next('div').slideToggle('open');
-    $(this).find(".qa__icon").toggleClass('open');
+  // アコーディオン
+  $(function () {
+    $('.qa__label').click(function () {
+      $(this).next('div').slideToggle('open');
+      $(this).find(".qa__icon").toggleClass('open');
+    });
   });
 });
 
-});
-
 // GSAPに関する記述エリア
-gsap.to('.sticky1',{x:60, duration:1} );
-gsap.to('.sticky2',{x:100, duration:1.5} );
-gsap.to('.sticky3',{x:150, duration:2.5} );
-
+gsap.to('.sticky1', {
+  x: 60,
+  duration: 1
+});
+gsap.to('.sticky2', {
+  x: 100,
+  duration: 1.5
+});
+gsap.to('.sticky3', {
+  x: 150,
+  duration: 2.5
+});
